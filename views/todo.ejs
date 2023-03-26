@@ -4,81 +4,125 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="/css/home.css" />
         <title><%= title %></title>
     </head>
     <body>
-        <header>
-            <div class="todoHeading">
-                <h1>TODO APP</h1>
-            </div>
-        </header>
-        <div class="formClass">
-            <form action="/create-todo" method="post">
-                <!-- Form Input -->
-                <div class="decriptionClass">
-                    <input
-                        type="textarea"
-                        required
-                        name="decription"
-                        placeholder="Enter Todo"
-                    />
+        <div class="maincontainer">
+                <div class="todoHeading">
+                    <h1>TODO APP</h1>
                 </div>
-                <!-- Select & Input -->
-                <div class="select-and-input">
-                    <select name="category" required>
-                        <option value="" disabled selected>
-                            Choose a Category
-                        </option>
-                        <option value="personal">personal</option>
-                        <option value="work">work</option>
-                        <option value="cleaning">cleaning</option>
-                        <option value="others">others</option>
-                    </select>
-                    <input
-                        type="date"
-                        class="dueDateValue"
-                        placeholder="dd/mm/yyyy"
-                        required
-                    />
-                </div>
+                <div class="border-line"></div>
 
-                <button
-                    class="button-design colorGrey"
-                    id="submitButton"
-                    type="submit"
-                >
-                    ADD TASK
-                </button>
-                <button
-                    class="button-design colorRed"
-                    id="deleteButton"
-                    type="submit"
-                >
-                    DELETE TASK
-                </button>
-            </form>
-        </div>
-        <!-- For Displaying the TODO List -->
-        <div class="todoDisplay">
-            <% for( let i of todoList ) { %>
-            <!--  -->
-            <div class="singleTask">
-                <input type="checkbox" name="delechack" class="delechack"
-                onclick="checkedOrNot()" uid = <%= i._id %> />
-                <div class="name_and_dueDate">
-                    <p id = <%= i._id %> uid = <%= i._id%> class = "dispdsc"  > <%= i.desc %> </p>
+            <div class="formClass">
 
-                    <p id = <%= i._id + i.dueDate %> class = "dueDate"  > <%= i.dueDate %> </p>
-                </div>
-                <div class="catesec">
-                    <%= i.category%>
-                </div>
+                <form action="/create-todo" method="post">
+                    <!-- Form Input -->
+                    <!-- Description -->
+                    <div class="descriptionClass">
+                        <label class = "label label-description">DESCRIPTION</label>
+                        <input
+                            type="textarea"
+                            required
+                            name="descriptionInput"
+                            placeholder="Enter Todo"
+                        />
+                    </div>
+                    <div class="border-line"></div>
+
+                    <!-- Select & Input -->
+                    <div class="select-input">
+                        <!-- Category -->
+                        <div class="categoryClass">
+                            <label class = "label label-category">CATEGORY</label>
+                            <select name="categoryInput" required>
+                                <option value="" disabled selected>
+                                    Choose a Category
+                                </option>
+                                <option value="personal">personal</option>
+                                <option value="work">work</option>
+                                <option value="cleaning">cleaning</option>
+                                <option value="others">others</option>
+                            </select>
+                        </div>
+                    <div class="border-line"></div>
+
+                        <!-- Due Date -->
+                        <div class="dueDateClass">
+                            <label class = "label-2nd">DUE DATE</label>
+                            <input
+                                type="date"
+                                name="dueDateInput"
+                                class="dueDateValueClass"
+                                placeholder="dd/mm/yyyy"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div class="border-line"></div>
+
+                    <!-- Submit Button -->
+                    <div class = "ButtonRegionClass" >
+                        <div class = "submitButtonClass" >
+                            <button
+                            class="button-design colorGrey"
+                            id="submitButton"
+                            type="submit"
+                            >
+                            ADD TASK
+                        </button>
+                    </div>
+                    <div class="border-button"></div>
+                    <!-- Delete Button -->
+                        <div class = "deleteButtonClass" >
+                            <a href="/" >
+                            <button
+                                class="button-design colorRed"
+                                id="deleteButton"
+                                type="button"
+                                onclick="return"
+                            >
+                                DELETE TASK
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                    <div class="border-line"></div>
+
+                    <!-- Form End -->
             </div>
-            <%}%>
-            <!--  -->
+
+            <!-- For Displaying the TODO List -->
+            <div class="todoDisplay">
+                <% for( let i of TodoLists ) { %>
+                <!--  -->
+                <div class="taskClass" uid = <%= i._id %>>
+                    <div class="taskDisplayRegion">
+                        <input type="checkbox" name="checkboxDeleteDB" class="checkboxDelete"
+                        onclick="checkedFunction()" uid = <%= i._id %> />
+                    </div>
+                        <!--  -->
+                    <div class= "taskName">
+                        <p id = <%= i._id %> uid = <%= i._id%> class = "descriptionTask"  > <%= i.descriptionDB %> </p>
+                    </div>
+                    <!--  -->
+                    <div class="categoryTaskClass">
+                        <%= i.categoryDB%>
+                    </div>
+
+                </div>
+                <div class = "dateClass">
+                    <p id = <%= i._id + i.dueDateDB %> class = "dueDate"  > <%= i.dueDateDB %> </p>
+                </div>
+                <div class="border-line"></div>
+
+                <%}%>
+                <!--  -->
+            </div>
         </div>
         <!-- Script -->
-        <script src="style.js"></script>
+        <script src="/js/home.js"></script>
     </body>
 </html>
+

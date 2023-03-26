@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const todoSchema = new mongoose.Schema({
-    description: {
+    descriptionDB: {
         type: String,
         required: true,
     },
-    category: {
+    categoryDB: {
         type: String,
         required: true,
     },
-    dueDate: {
+    dueDateDB: {
         type: String,
         required: true,
     },
@@ -17,6 +17,5 @@ const todoSchema = new mongoose.Schema({
 
 //  'Contact' will be name in the database & that 'Contact'  or Collection will be defined in the schema contactSchema
 
-todo = mongoose.model('todo', todoSchema);
-
-module.exports = todo;
+const Todo = mongoose.model('Todo', todoSchema);
+module.exports = Todo;

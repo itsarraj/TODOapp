@@ -1,69 +1,37 @@
+// Import the Express library
 const express = require('express');
+
+// Import the path library
 const path = require('path');
+
+// Define the port number that the server will run on
 const port = 8000;
+
+// Create a new Express application
 const app = express();
 
+// Import the database configuration
 const db = require('./config/mongoose');
+
+// Import the Todo model
 const Todo = require('./models/todo');
 
+// Set the view engine to EJS
 app.set('view engine', 'ejs');
+
+// Set the path to the views folder
 app.set('views', './views');
 
+// Use middleware to parse form data
 app.use(express.urlencoded());
+
+// Serve static files from the 'assets' folder
 app.use(express.static('assets'));
+
+// Define the root route and use the routes defined in the 'routes.js' file
 app.use('/', require('./routes'));
 
-// app.get('/', function (req, res) {
-//     //  {} query parameters
-//     Contact.find({}, function (err, contacts) {
-//         if (err) {
-//             console.log(err);
-//             return;
-//         }
-
-//         return res.render('contact', {
-//             title: 'Contact_List',
-//             contact_list: contacts,
-//         });
-//     });
-// });
-
-// app.post('/create-contact', function (req, res) {
-//     // contactList.push(req.body); // contact list pushed in array
-
-//     // Contact list pushed in database
-//     Contact.create(
-//         {
-//             name: req.body.name,
-//             phone: req.body.phone,
-//         },
-//         function (err, newContact) {
-//             if (err) {
-//                 console.log('error in creating a contact :', err);
-//                 return;
-//             }
-//             console.log('**********', newContact);
-//             return res.redirect('back');
-//         }
-//     );
-// });
-
-// // <-- { For DELETING a CONTACT } -->
-// app.get('/delete-contact/', function (req, res) {
-//     // get the id from query in the url
-//     let id = req.query.id;
-
-//     //find the contact in the database using id and delete it
-//     Contact.findByIdAndDelete(id, function (err) {
-//         if (err) {
-//             console.log(err);
-//             return;
-//         }
-//         return res.redirect('back');
-//     });
-// });
-
-// fire up the server
+// Start the server and listen on the specified port
 app.listen(port, function (err) {
     if (err) {
         console.log(`Error running server: ${err}`);

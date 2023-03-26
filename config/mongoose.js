@@ -1,16 +1,16 @@
-// We require mongoose
+// Require the Mongoose library
 const mongoose = require('mongoose');
 
-// Connected to the database
+// Connect to the "todo_list_db" database running on localhost
 mongoose.connect('mongodb://localhost/todo_list_db');
 
-// When conncted this function "connection" give us access to the database
+// Get a reference to the database connection object
 const db = mongoose.connection;
 
-// log if error occurs
-db.on('error', console.error.bind(console, 'error connecting to database'));
+// Log an error message if there is an issue connecting to the database
+db.on('error', console.error.bind(console, 'Error connecting to database'));
 
-// this connection (line 8) is open for me to interact with the database then call the callback function
+// Once the connection is open, log a success message
 db.once('open', function () {
     console.log('Successfully connected to database');
 });

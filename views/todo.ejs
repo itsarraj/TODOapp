@@ -9,28 +9,27 @@
     </head>
     <body>
         <div class="maincontainer">
-                <div class="todoHeading">
-                    <h1>TODO APP</h1>
-                </div>
+            <!-- Container for the whole page -->
+            <div class="todoHeading">
+                <!-- Heading section for the TODO app -->
+                <h1>TODO APP</h1>
+            </div>
                 <div class="border-line"></div>
-
-            <div class="formClass">
-
-                <form action="/create-todo" method="post">
-                    <!-- Form Input -->
-                    <!-- Description -->
-                    <div class="descriptionClass">
-                        <label class = "label label-description">DESCRIPTION</label>
-                        <input
-                            type="textarea"
-                            required
-                            name="descriptionInput"
-                            placeholder="Enter Todo"
-                        />
-                    </div>
-                    <div class="border-line"></div>
-
-                    <!-- Select & Input -->
+                    <div class="formClass">
+                        <!-- Form section for adding a new TODO item -->
+                        <form action="/create-todo" method="post">
+                        <!-- Form Input -->
+                            <div class="descriptionClass">
+                            <label class = "label label-description">DESCRIPTION</label>
+                            <input
+                                type="textarea"
+                                required
+                                name="descriptionInput"
+                                placeholder="Enter Todo"
+                            />
+                            </div>
+                            <div class="border-line"></div>
+                            <!-- Select & Input -->
                     <div class="select-input">
                         <!-- Category -->
                         <div class="categoryClass">
@@ -88,8 +87,7 @@
                         </div>
                     </div>
                 </form>
-                    <div class="border-line"></div>
-
+                <div class="border-line"></div>
                     <!-- Form End -->
             </div>
 
@@ -112,6 +110,7 @@
                     </div>
 
                 </div>
+                <!-- Date Class -->
                 <div class = "dateClass">
                     <p id = <%= i._id + i.dueDateDB %> class = "dueDate"  > <%= i.dueDateDB %> </p>
                 </div>
